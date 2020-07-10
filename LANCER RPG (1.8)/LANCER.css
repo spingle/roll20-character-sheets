@@ -3,6 +3,7 @@ input[type=number] {/*workaround for firefox jank*/
   -moz-appearance: textfield;
 }
 
+
 /*-------------BASIC FLEX SETUP-------------*/
 
 .sheet-flex-row-wrapper
@@ -25,8 +26,6 @@ input[type=number] {/*workaround for firefox jank*/
     padding:3px;
     flex-flow: row wrap;
 }
-
-
 
 .sheet-tab-flex-grow-item
 {
@@ -56,8 +55,14 @@ input[type=number] {/*workaround for firefox jank*/
 .sheet-flex-element
 {
     display:flex;
-    flex-direction:row;
+    flex-direction: row;
     height:25px
+}
+
+.sheet-flex-element-dynamic
+{
+    display:flex;
+    flex-flow:row;
 }
 
 .sheet-flex-element-reverse
@@ -227,12 +232,35 @@ input[type=number] {/*workaround for firefox jank*/
 
 /*-------------END UTILITY CLASSES-------------*/
 
+/*---------------SETTINGS SETUP----------------*/
+textarea.sheet-compcon{
+background:#f0f0f0;
+height:200px;
+}
+
+div.sheet-compcon div.sheet-flex-element        
+{
+    margin-bottom:25px;
+    margin-left:5px;
+}
+
+span.sheet-validate{
+    margin:4px;
+    background:#ddd;
+    font-size:16px;
+    font-weight: bold;
+}
+
+
+/*-------------END SETTINGS SETUP--------------*/
+
+
 /*-------------SELECTOR-SPECIFIC CLASSES-------------*/
 
 /*-------------Button-------------*/
 button[type=roll].sheet-grit-roll::before{
     background:#000;
-    content: '';
+    content: ''; 
 }
 
 button[type=roll]{
@@ -246,7 +274,7 @@ button[type=roll].sheet-pilotweapon-roll::before{
     z-index:0;
     border-radius:0px;
     outline:none;
-    content: '';
+    content: ''; 
 }
 
 button[type=roll].sheet-hase-roll::before{
@@ -254,28 +282,28 @@ button[type=roll].sheet-hase-roll::before{
     z-index:0;
     border-radius:0px;
     outline:none;
-    content: '';
+    content: ''; 
 }
 
 button[type=roll].sheet-weapon-roll::before{
-    content: '';
+    content: ''; 
 }
 
 
 button[type=roll].sheet-core-struct-roll::before{
-    content: '';
+    content: ''; 
 }
 
 button[type=roll].sheet-sys-roll::before{
-    content: '';
+    content: ''; 
 }
 
 button[type=roll].sheet-talent-roll::before{
-    content: '';
+    content: ''; 
 }
 
 
-button.sheet-grit-roll{
+button.sheet-grit-roll{ 
     box-shadow:none;
     border:none;
     border-radius:0px;
@@ -285,10 +313,21 @@ button.sheet-grit-roll{
     color:#fff;
 }
 
+button.sheet-mount-roll{
+    box-shadow:none;
+    border:none;
+    border-radius:0px;
+    height:100%;
+    background:#000;
+    font-weight:bold;
+    color:#fff;
+    margin:0px;
+}
+
 button.sheet-talent-roll{
     width:405px;
     right:3px;
-    text-align: left;
+    text-align: left; 
     box-shadow:none;
     border:none;
     position:relative;
@@ -358,7 +397,7 @@ button.sheet-pilotweapon-roll{
     font-weight:bold;
 }
 
-button.sheet-grit-roll:hover, button.sheet-hase-roll:hover, button.sheet-sys-roll:hover,button.sheet-talent-roll:hover, button.sheet-weapon-roll:hover, .sheet-weapon-counter:hover, button.sheet-pilotweapon-roll:hover{
+button.sheet-grit-roll:hover, input.sheet-editbutton:hover + span.sheet-editbutton,input.sheet-showreaction:hover + span.sheet-showreaction, button.sheet-hase-roll:hover, button.sheet-sys-roll:hover,button.sheet-talent-roll:hover, button.sheet-weapon-roll:hover, .sheet-weapon-counter:hover, button.sheet-pilotweapon-roll:hover{
     border-radius:0px;
     color:#ff3838;
     position:relative;
@@ -400,12 +439,12 @@ label.sheet-hp-section-title
 {
     font-size:16px;
     height:100%;
-    color:#ffffff;
+    color:#ffffff;  
     text-align:center;
     padding-top:2px;
 }
 
-div.sheet-headerbar label.sheet-section-title
+div.sheet-headerbar label.sheet-section-title 
 {
     padding-top:1px;
 }
@@ -431,6 +470,7 @@ div.sheet-pilotarmor input.sheet-1digit, div.sheet-pilotarmor input.sheet-2digit
 {
     width:30px;
     padding-left:0px;
+    padding-bottom:2px;
     text-align:center;
     position:relative;
     font-size:14px;
@@ -449,7 +489,7 @@ div.sheet-pilotweps input
     margin:0px;
     position:relative;
     bottom:1px;
-    left:2px;
+    left:2px;   
     padding-left:2px;
     padding-top:4px;
     padding-right:0px;
@@ -463,7 +503,6 @@ div.sheet-pilotweps input.sheet-1digit, div.sheet-pilotweps input.sheet-2digit
     position:relative;
     font-size:14px;
     font-weight: bold;
-
 }
 
 label.sheet-autocalc-rolls
@@ -480,10 +519,10 @@ label.sheet-mid
 }
 /*-------------Input-------------*/
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
 }
 
 input
@@ -499,7 +538,7 @@ input.sheet-flex
 {
     flex-basis:auto;
     display:flex;
-    flex-grow:3;
+    flex-grow:1;
 }
 
 input[type="number"].sheet-1digit
@@ -538,6 +577,14 @@ input[type="number"].sheet-2digit
     border-radius:0px;
 }
 
+
+div.sheet-pilot-hp input.sheet-2digit
+{
+    font-size:24px !important; 
+    padding-bottom:3px;
+}
+
+
 input.sheet-compressed
 {
     height:18px;
@@ -570,7 +617,7 @@ input.sheet-license
     border-radius:0px;
     height: 30px;
     opacity:0;
-    z-index:9999;
+    z-index:9990;
 }
 
 input.sheet-talentrank
@@ -605,7 +652,7 @@ input.sheet-structure, input.sheet-corestress{
     margin-right:10px;
     width: 55px;
     height: 40px;
-    cursor: pointer;
+    cursor: pointer;    
     position: relative;
     opacity: 0;
     z-index: 9999;
@@ -640,11 +687,16 @@ input.sheet-showreaction:not(:checked) + span.sheet-showreaction:after,input.she
 content:"▼";
 }
 
+input.sheet-basemount-type
+{
+    display:none;
+}
+
 input.sheet-overcharge,input.sheet-structure, input.sheet-corestress
 {
     width: 38px;
     height:40px;
-    cursor: pointer;
+    cursor: pointer;    
     opacity:0;
     border:0px;
     margin-right:0px;
@@ -655,7 +707,7 @@ input.sheet-overcharge,input.sheet-structure, input.sheet-corestress
     margin-top:0px;
 }
 
-input.sheet-corepower, .sheet-showreaction, .sheet-showactive
+input.sheet-corepower, .sheet-showreaction, .sheet-showactive,input.sheet-editbutton
 {
     display:inline-block;
     width:22px;
@@ -703,6 +755,23 @@ span.sheet-showreaction, span.sheet-showactive
     font-weight:bold;
 }
 
+span.sheet-editbutton
+{
+    color:#444;
+}
+
+input.sheet-editbutton:checked  ~ .sheet-edit-off {
+    display: none;
+}
+
+input.sheet-editbutton:not(:checked)  ~ .sheet-edit-on {
+    display: none;
+}
+
+input.sheet-showreaction:checked ~ div.sheet-base-auxmount, input.sheet-showreaction:checked ~ div.sheet-base-mainmount {
+    display:none;
+}
+
 input.sheet-showreaction:checked  ~ div.sheet-reactbar {
     display: none;
 }
@@ -724,6 +793,18 @@ input.sheet-showreaction:not(:checked) + span.sheet-showreaction:after
 {
 content:"▼";
 }
+
+input.sheet-basemount-type-1:not(:checked) + input + div.sheet-base-auxmount
+{
+    display:none !important;
+}
+
+
+input.sheet-basemount-type-2:not(:checked)  + div.sheet-base-mainmount 
+{
+    display:none !important;
+}
+
 
 div.sheet-skillsbar input
 {
@@ -753,14 +834,22 @@ div.sheet-wepinputs{
     width:99%;
 }
 
+div.sheet-wep-spacer
+{
+    width:6px;
+    border-right:2px solid gray;
+
+}
 
 
 select {
+    background:none;
     color:#000;
     font-weight:bold;
     font-size:12px;
     border-radius:0px;
     border: none;
+    text-align:left;
 }
 
 select.sheet-talent-rank-select
@@ -784,7 +873,7 @@ span.sheet-hp-separator
     vertical-align:center;
     font-weight:bold;
     margin-top:-4px;
-}
+}   
 
 span.sheet-haseinfo
 {
@@ -796,7 +885,7 @@ span.sheet-overcharge,span.sheet-structure, span.sheet-corestress
     background: #dbdbdb;
     text-align: center;
     display: inline-block;
-    font-size: 21px;
+    font-size: 21px;    
     color: black;
     padding-top:3px;
     font-weight: bold;
@@ -804,7 +893,7 @@ span.sheet-overcharge,span.sheet-structure, span.sheet-corestress
     margin-right:0px;
     margin-left:0px;
     height: 44px;
-    cursor: pointer;
+    cursor: pointer;    
     position: relative;
     vertical-align: middle;
     border: 3px solid black;
@@ -833,6 +922,7 @@ span.sheet-pskill-fancy
 span.sheet-license
 {
     cursor:pointer;
+    z-index:10;
     display: inline-block;
     line-height:30px;
     text-align: center;
@@ -874,6 +964,7 @@ span.sheet-talentrank
     margin-bottom:0px;
     padding-left:2px;
     position:relative;
+    z-index:10;
     left:20px;
 }
 
@@ -895,6 +986,15 @@ span.sheet-frame-autocalcs
     font-weight:bold;
 }
 
+span.sheet-edit-off
+{
+    padding-left:5px;
+    margin-bottom:5px;
+    color: #000;
+    background:#dbdbdb;
+    border-radius: 2px;
+
+}
 
 /*-------------Textarea-------------*/
 textarea
@@ -929,6 +1029,10 @@ textarea
 .repcontrol[data-groupname="repeating_traits"] > .btn {
     position:relative;
     left:5px;
+}
+
+.repcontainer .itemcontrol {
+  z-index: 10000;
 }
 
 .repcontrol[data-groupname="repeating_traits"]  {
@@ -1002,19 +1106,20 @@ textarea
 
 /*-------------TAB SETUP-------------*/
 /*this hides the contents of each tab by default*/
-.charsheet div[class^="sheet-section"] {
+.charsheet div[class^="sheet-section"] {    
     display: none;
 }
 
 /*this shows the tab content when the appropriate input field is selected*/
 .charsheet input.sheet-tab1:checked ~ div.sheet-section-pilot,
 .charsheet input.sheet-tab2:checked ~ div.sheet-section-talents,
-.charsheet input.sheet-tab3:checked ~ div.sheet-section-frame
+.charsheet input.sheet-tab3:checked ~ div.sheet-section-frame,
+.charsheet input.sheet-tab4:checked ~ div.sheet-section-settings
 {
     display: block;
 }
 
-.charsheet input.sheet-tab99:checked ~ div[class^="sheet-section"] {
+.charsheet input.sheet-tab99:checked ~ div[class^="sheet-section"] {    
     display: block;
 }
 
@@ -1022,54 +1127,56 @@ textarea
 .charsheet input.sheet-tab {
     width: 100px;
     height: 50px;
-    cursor: pointer;
+    cursor: pointer;    
     position: relative;
     opacity: 0;
     z-index: 9999;
 }
 
-.charsheet input.sheet-acc-tab {
-    left:15px;
-    width: 75px;
-    height: 50px;
-    cursor: pointer;
-    position: relative;
-    opacity:0;
-    z-index: 9999;
-}
+
 
 /*this styles the span with the tab information and slides to the left, so it appears underneath the radio button*/
 .charsheet span.sheet-tab {
     text-align: center;
     display: inline-block;
-    font-size: 16px;
+    font-size: 16px;    
     background: #c7c7c7;
     color: black;
     font-weight: bold;
     width: 100px;
     border-radius:0px;
     height: 40px;
-    cursor: pointer;
+    cursor: pointer;    
     position: relative;
     vertical-align: middle;
     margin-left: -101px;/*originally 91px*/
+}
+
+.charsheet input.sheet-acc-tab {
+    left:15px;
+    width: 60px;
+    height: 50px;
+    cursor: pointer;    
+    position: relative;
+    opacity:0;
+    z-index: 9999;
 }
 
 .charsheet span.sheet-acc-tab {
     left:15px;
     text-align: center;
     display: inline-block;
-    font-size: 16px;
+    font-size: 16px;    
     background: #c7c7c7;
     color: black;
     font-weight: bold;
     border-radius: 0px;
-    width: 75px;
+    width: 60px;
     height: 40px;
-    cursor: pointer;
+    cursor: pointer;    
     position: relative;
     vertical-align: middle;
-    margin-left: -76px;/*originally 91px*/
+    margin-left: -61px;/*originally 91px*/
 }
 
 /*license button color setup*/
@@ -1101,7 +1208,7 @@ input.sheet-talentrank3:checked+span.sheet-talentrank3 + input.sheet-talentrank2
 .charsheet input.sheet-tab6:checked + span.sheet-tab6,
 .charsheet input.sheet-tab7:checked + span.sheet-tab7,
 .charsheet input.sheet-tab8:checked + span.sheet-tab8,
-.charsheet input.sheet-tab99:checked + span.sheet-tab99
+.charsheet input.sheet-tab99:checked + span.sheet-tab99 
 {
     background: #007575;
     color: #fff;
@@ -1195,135 +1302,3 @@ input.sheet-corepower:not(:checked) + span.sheet-corepower:after
 content:"✓";
 }
 
-/*-------------ROLLTEMPLATE STYLING-------------*/
-/* Icon */
-.sheet-icon {
-    max-height: 15px;
-}
-
-/* Smaller margins - remove these if you want the huge default left margin */
-.sheet-rolltemplate-lancer {
-    margin-left: -37px;
-}
-.withoutavatars .sheet-rolltemplate-lancer {
-    margin-left: -7px;
-}
-
-.sheet-rolltemplate-lancer .sheet-container {
-    border: 1px solid;
-    /* by default, the border is the same color as the header. You can change this here, e.g. to black */
-    border-color: var(--header-bg-color);
-}
-
-/* Header formatting - name and tags */
-.sheet-rolltemplate-lancer .sheet-header {
-    background-color: var(--header-bg-color);
-    text-align: left;
-    color: var(--header-text-color);
-    padding: 5px;
-    font-family: Consolas, monaco, monospace;
-}
-.sheet-rolltemplate-lancer .sheet-name {
-    font-size:1.1em;
-}
-.sheet-rolltemplate-lancer .sheet-tags {
-    font-size:.9em;
-}
-
-/* example colors */
-.sheet-rolltemplate-lancer .sheet-container {
-    /* this is the default color */
-    --header-bg-color: #D2B48C;
-    --header-text-color: #FFF;
-}
-.sheet-rolltemplate-lancer .sheet-container.sheet-color-red {
-    --header-bg-color: #c31a20;
-    --header-text-color: #FFF;
-}
-.sheet-rolltemplate-lancer .sheet-container.sheet-color-green {
-    --header-bg-color: #68be43;
-    --header-text-color: #FFF;
-}
-.sheet-rolltemplate-lancer .sheet-container.sheet-color-teal {
-    --header-bg-color: #0a7675;
-    --header-text-color: #FFF;
-}
-.sheet-rolltemplate-lancer .sheet-container.sheet-color-black {
-    /* this is the default color */
-    --header-bg-color: #000;
-    --header-text-color: #FFF;
-}
-.sheet-rolltemplate-lancer .sheet-container.sheet-color-purple {
-    /* this is the default color */
-    --header-bg-color: #7f1f78;
-    --header-text-color: #FFF;
-}
-
-.sheet-rolltemplate-lancer .sheet-container.sheet-color-orange {
-    /* this is the default color */
-    --header-bg-color: #c85a00;
-    --header-text-color: #FFF;
-}
-
-/* Range/Threat & Damage row */
-.sheet-rolltemplate-lancer .sheet-rng-dmg {
-    font-weight: bold;
-    grid-column: span 2;
-    text-align: left;
-    padding: 5px;
-    font-family: Consolas, monaco, monospace;
-}
-
-/* Range/Threat & Damage row */
-.sheet-rolltemplate-lancer .sheet-to-hit {
-    grid-column: span 2;
-    text-align: left;
-    padding: 5px;
-    font-family: Consolas, monaco, monospace;
-}
-
-/* Effects & Notes */
-.sheet-rolltemplate-lancer .sheet-effect {
-    grid-column: span 2;
-    text-align: left;
-    padding: 5px;
-    background:#EEE;
-}
-
-.sheet-rolltemplate-lancer .sheet-d20 {
-    font-family: dicefontd20;
-    font-size: 1.3em;
-    font-weight: bold;
-    vertical-align: middle;
-}
-
-/* Icon */
-.sheet-rolltemplate-lancer .sheet-icon {
-    max-height: 15px;
-    vertical-align: text-top;
-}
-
-/* Allprops part */
-.sheet-rolltemplate-lancer .sheet-content {
-    display: grid;
-    background: #FFF;
-    /* Header formatting - modify the column layout below */
-    grid-template-columns: auto auto;
-    /* Line height to match default roll template */
-    line-height:1.4em;
-}
-.sheet-rolltemplate-lancer .sheet-content > div {
-    padding: 5px;
-}
-
-/* Left column */
-.sheet-rolltemplate-lancer .sheet-content .sheet-key {
-    font-weight: bold;
-    padding-right: 10px;
-    text-align: right;
-}
-
-/* Empty rule, use this if you want to change the right column
-.sheet-rolltemplate-lancer .sheet-value {
-}
-*/

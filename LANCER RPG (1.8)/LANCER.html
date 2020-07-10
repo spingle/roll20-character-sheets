@@ -1,10 +1,11 @@
 <script type="text/worker">
-on("sheet:opened change:acc_diff change:frame_save_target change:frame_class change:acc_diff_mod change:frame_sp change:core_hull change:core_agility change:core_systems change:core_engineering change:licenselevel change:frame_evasion change:frame_sensors change:frame_edefense change:frame_evasion change:frame_armor change:frame_speed change:frame_hp_bonus change:frame_heat_bonus change:frame_repairs_bonus change:acc_tab change:frame_evasion_bns change:frame_limited_bns change:frame_speed_bns change:frame_techatk change:frame_techatk_bns change:frame_max_sp_bns change:frame_edefense_bns", function(){
-	getAttrs(["acc_diff", "core_hull", "core_agility","core_systems","core_engineering","licenselevel","frame_evasion", "frame_evasion_bns", "frame_techatk", "frame_techatk_bns", "frame_max_sp_bns", "frame_edefense", "frame_limited_bns", "frame_edefense_bns","frame_speed", "frame_speed_bns", "frame_hp_bonus","frame_heat_bonus","frame_repairs_bonus", "frame_sp", "frame_class","acc_diff","acc_tab","grit"], function(values) {
+on("sheet:opened change:acc_diff change:frame_save_target change:frame_class change:acc_diff_mod change:frame_sp change:core_hull change:core_agility change:core_systems change:core_engineering change:licenselevel change:frame_evasion change:frame_sensors change:frame_edefense change:frame_evasion change:frame_armor change:frame_speed change:frame_hp_bonus change:frame_heat_bonus change:frame_repairs_bonus change:acc_tab change:frame_evasion_bns change:frame_limited_bns change:frame_speed_bns change:frame_techatk change:frame_techatk_bns change:frame_max_sp_bns change:frame_edefense_bns change:structure_tab change:basemount_select", function(){
+	getAttrs(["acc_diff", "core_hull", "core_agility","core_systems","core_engineering","licenselevel","frame_evasion", "frame_evasion_bns", "frame_techatk", "frame_techatk_bns", "frame_max_sp_bns", "frame_edefense", "frame_limited_bns", "frame_edefense_bns","frame_speed", "frame_speed_bns", "frame_hp_bonus","frame_heat_bonus","frame_repairs_bonus", "frame_sp", "frame_class","acc_diff","acc_tab","grit", "structure_tab","basemount_select", "basemount_type"], function(values) {
 		let net_acc=parseInt(values.acc_diff,10);
 		let frame_hp = 0;
 		let frame_repairs = 0;
 		let accdiff_input = net_acc;
+		let basemount_type = 1;
 
 		switch (values.frame_class)
 		{
@@ -13,185 +14,240 @@ on("sheet:opened change:acc_diff change:frame_save_target change:frame_class cha
 				frame_heat = 6;
 				frame_repairs = 5;
 				break;
+
 			case "BLACKBEARD":
 				frame_hp = 12;
 				frame_heat = 4;
 				frame_repairs = 5;
 				break;
+
 			case "CALIBAN":
 				frame_hp = 6;
 				frame_heat = 5;
 				frame_repairs = 5;
 				break;
+
 			case "DRAKE":
 				frame_hp = 8;
 				frame_heat = 5;
 				frame_repairs = 5;
 				break;
+
 			case "LANCASTER":
 				frame_hp = 6;
 				frame_heat = 6;
 				frame_repairs = 10;
 				break;
+
 			case "NELSON":
 				frame_hp = 8;
 				frame_heat = 6;
 				frame_repairs = 5;
 				break;
+
 			case "RALEIGH":
 				frame_hp = 10;
 				frame_heat = 5;
 				frame_repairs = 5;
 				break;
+
 			case "TORTUGA":
 				frame_hp = 8;
 				frame_heat = 6;
 				frame_repairs = 6;
 				break;
+
 			case "VLAD":
 				frame_hp = 8;
 				frame_heat = 6;
 				frame_repairs = 4;
 				break;
+
 			case "ZHENG":
 				frame_hp = 10;
 				frame_heat = 6;
 				frame_repairs = 6;
 				break;
+
 			case "ATLAS":
 				frame_hp = 6;
 				frame_heat = 4;
 				frame_repairs = 2;
 				break;
+
 			case "BLACK WITCH":
 				frame_hp = 6;
 				frame_heat = 6;
 				frame_repairs = 3;
 				break;
+
 			case "DEATH'S HEAD":
 				frame_hp = 8;
 				frame_heat = 6;
 				frame_repairs = 2;
 				break;
+
 			case "DUSK WING":
 				frame_hp = 6;
 				frame_heat = 4;
 				frame_repairs = 3;
 				break;
+
 			case "METALMARK":
 				frame_hp = 8;
 				frame_heat = 5;
 				frame_repairs =4;
 				break;
+
 			case "MONARCH":
 				frame_hp = 8;
 				frame_heat = 6;
 				frame_repairs = 3;
 				break;
+
 			case "MOURNING CLOAK":
 				frame_hp = 8;
 				frame_heat = 4;
 				frame_repairs = 3;
 				break;
+
 			case "SWALLOWTAIL":
 				frame_hp = 6;
 				frame_heat = 4;
 				frame_repairs = 5;
 				break;
+
 			case "WHITE WITCH":
 				frame_hp = 7;
 				frame_heat = 4;
 				frame_repairs = 5;
-				breakl
+				break;
+
 			case "BALOR":
 				frame_hp = 12;
 				frame_heat = 4;
 				frame_repairs = 4;
 				break;
+
 			case "GOBLIN":
 				frame_hp = 6;
 				frame_heat = 4;
 				frame_repairs = 2;
 				break;
+
 			case "GORGON":
 				frame_hp = 12;
 				frame_heat = 5;
 				frame_repairs = 3;
 				break;
+
 			case "KOBOLD":
 				frame_hp = 6;
 				frame_heat = 6;
 				frame_repairs = 2;
 				break;
+
 			case "HYDRA":
 				frame_hp = 8;
 				frame_heat = 5;
 				frame_repairs = 4;
 				break;
+
 			case "LICH":
 				frame_hp = 4;
 				frame_heat = 3;
 				frame_repairs = 5;
 				break;
+
 			case "MANTICORE":
 				frame_hp = 8;
 				frame_heat = 7;
 				frame_repairs = 3;
 				break;
+
 			case "MINOTAUR":
 				frame_hp = 12;
 				frame_heat = 5;
 				frame_repairs = 4;
 				break;
+
 			case "PEGASUS":
 				frame_hp = 8;
 				frame_heat = 6;
 				frame_repairs = 3;
 				break;
+
 			case "BARBAROSSA":
 				frame_hp = 10;
 				frame_heat = 8;
 				frame_repairs = 4;
 				break;
+
 			case "GENGHIS":
 				frame_hp = 6;
 				frame_heat = 10;
 				frame_repairs = 4;
 				break;
+
 			case "ISKANDER":
 				frame_hp = 8;
 				frame_heat = 7;
 				frame_repairs = 3;
 				break;
+
 			case "NAPOLEON":
 				frame_hp = 6;
 				frame_heat = 8;
 				frame_repairs = 3;
 				break;
+
 			case "SALADIN":
 				frame_hp = 12;
 				frame_heat = 8;
 				frame_repairs = 4;
 				break;
+
 			case "SHERMAN":
 				frame_hp = 10;
 				frame_heat = 8;
 				frame_repairs = 4;
 				break;
+
 			case "SUNZI":
 				frame_hp = 7;
 				frame_heat = 7;
 				frame_repairs = 3;
 				break;
+
 			case "TOKUGAWA":
 				frame_hp = 8;
 				frame_heat = 8;
 				frame_repairs = 4;
 				break;
+
 			default:
 				frame_hp=0;
 				frame_heat=0;
 				frame_repairs=0;
+				break;
+		}
+
+		switch (values.basemount_select)
+		{
+			case "Aux":
+				basemount_type = 1;
+				break;
+			case "Main":
+				basemount_type = 2;
+				break;
+			case "Main/Aux":
+				basemount_type = 3;
+				break;
+			case "Heavy":
+				basemount_type = 4;
+				break;
+			case "Integrated":
+				basemount_type = 5;
 				break;
 		}
 
@@ -238,8 +294,207 @@ on("sheet:opened change:acc_diff change:frame_save_target change:frame_class cha
 			sys_half:Math.floor(parseInt(values.core_systems,10) / 2 ),
 			acc_diff:accdiff_input,
 			autocalc_limbonus: parseInt(values.frame_limited_bns,10) + Math.floor(parseInt(values.core_engineering,10) / 2 ),
-			acc_diff_block:acc_diff_block
+			acc_diff_block:acc_diff_block,
+			structure: 4-parseInt(values.structure_tab,10),
+			compcon_isvalidated:"FALSE",
+			compcon_validate:"WAITING FOR VALIDATION...",
+			compcon_import:"WAITING FOR IMPORT...",
+			basemount_type:basemount_type
 		});
+	});
+});
+
+on("clicked:validate", function() {
+	getAttrs(["compcon_import_staging"], function(values) {
+		var is_valid_import = true;
+		var validate_text = "Comp/Con data validation successful"
+    	console.log("BEGINNING IMPORT");
+    	try{
+    		var compcon_data = JSON.parse(values.compcon_import_staging)
+    		console.log(compcon_data.licenses[0].id)
+    		console.log(compcon_data.talents[0].id)
+    		console.log(compcon_data.skills[0].id)
+    		console.log(compcon_data.mechSkills[0])
+    		console.log(compcon_data.loadouts[0])
+    		console.log(compcon_data.mechs[0])
+		}
+		catch(err){
+			validate_text = "Error during JSON validation! Check your file formatting.";
+			is_valid_import = false;
+			console.log("Error during JSON import!")
+		}
+		finally{
+	    	if (is_valid_import){
+	    		validate_text= "Comp/Con data validation successful!"
+	    	    setAttrs({                            
+	    	    	compcon_validate:validate_text,
+	    	    	compcon_isvalidated:"TRUE"
+	    		});	
+	    	}
+	    	else{
+		    	setAttrs({                      
+		    		compcon_validate:validate_text,
+		    		compcon_isvalidated:"FALSE"
+				});
+	    	}
+    	}
+ 	});
+});
+
+on ("clicked:import",function(){
+	getAttrs(["compcon_import_staging"], function(values){
+    	var c = JSON.parse(values.compcon_import_staging);
+    	var name = c.name;
+    	var callsign = c.callsign;
+    	var licenselevel = c.level;
+    	var player = c.player_name;
+    	var notes = c.notes;
+    	var backstory = c.history;
+    	var background = c.background;
+    	var current_hp = c.current_hp;
+    	var core_hull = c.mechSkills[0];
+    	var core_agility = c.mechSkills[1];
+    	var core_systems = c.mechSkills[2];
+    	var core_engineering= c.mechSkills[3];
+    	var licenseContainer = c.licenses;
+    	var skillsContainer = c.skills;
+    	var talentsContainer = c.talents;
+    	var cbContainer = c.core_bonuses;
+    	var activeGearIndex = c.active_loadout_index;
+    	var gearContainer = c.loadouts[activeGearIndex];
+    	var pilotWepContainer = gearContainer.weapons;
+    	var mechContainer = c.mechs;
+    	var activeMechIndex = 0;
+    	if (mechContainer.length>1)
+    	{
+    		for(let i=1;i<mechs.length;i++)
+    		{	
+    			if (mechContainer[i].active)
+    			{
+    				activeMechIndex=i;
+    			}
+    		}
+    	}
+    	var activeMech = mechContainer[activeMechIndex];
+    	var structure = activeMech.current_structure;
+    	var core_stress = 4-activeMech.current_stress;
+    	var overcharge = activeMech.current_overcharge;
+    	var frame_hp = activeMech.current_hp;
+    	var frame_heat = activeMech.current_heat;
+    	var frame_repairs = activeMech.current_repairs;
+    	var activeMechLoadoutIndex = activeMech.active_loadout_index;
+    	var mechGearContainer = activeMech.loadouts[activeMechLoadoutIndex];
+    	var mechSystems = mechGearContainer.systems; 
+    	console.log(mechSystems);
+    	var mechWeapons = mechGearContainer.mounts; 
+
+    	if (mechSystems.length>1)
+    	{
+    		let newSystems = mechSystems.length-1;
+    		for (let i =0; i <newSystems;i++)
+    		{
+    			let newRowID = generateRowID();
+    			let newAttrs = {};
+    			newAttrs["repeating_systems_"+newRowID+"_system_name"] = getTranslationByKey(mechSystems[i+1].id);
+    			newAttrs["repeating_systems_"+newRowID+"_system_tags"] = getTranslationByKey(mechSystems[i+1].id+"_tags");
+    			newAttrs["repeating_systems_"+newRowID+"_system_effect"] = getTranslationByKey(mechSystems[i+1].id+"_desc");
+    			newAttrs["repeating_systems_"+newRowID+"_system_sp"] = getTranslationByKey(mechSystems[i+1].id+"_sp");
+    			setAttrs(newAttrs);
+    		}
+    	}
+
+
+    	if (licenseContainer.length>1)
+    	{
+    		let newLicenses = licenseContainer.length-1;
+    		for (let i =0; i <newLicenses;i++)
+    		{
+    			let newRowID = generateRowID();
+    			let newAttrs = {};
+    			newAttrs["repeating_licenses_"+newRowID+"_licensename"] = getTranslationByKey(licenseContainer[i+1].id);
+    			newAttrs["repeating_licenses_"+newRowID+"_license_tab"] = licenseContainer[i+1].rank;
+    			setAttrs(newAttrs);
+    		}
+    	}
+
+    	if (skillsContainer.length>1)
+    	{
+    		let newSkills = skillsContainer.length-1;
+    		for (let i =0; i <newSkills;i++)
+    		{
+    			let newRowID = generateRowID();
+    			let newAttrs = {};
+    			newAttrs["repeating_pilotskills_"+newRowID+"_pilotskill"] = getTranslationByKey(skillsContainer[i+1].id);
+    			newAttrs["repeating_pilotskills_"+newRowID+"_pilotskill_mod"] = skillsContainer[i+1].rank*2;
+    			setAttrs(newAttrs);
+    		}
+    	}
+
+    	if (talentsContainer.length>2)
+    	{
+    		let newTalents = talentsContainer.length-2;
+    		for (let i =0; i <newTalents;i++)
+    		{
+    			let newRowID = generateRowID();
+    			let newAttrs = {};
+    			newAttrs["repeating_talents_"+newRowID+"_talent_name"] = getTranslationByKey(talentsContainer[i+2].id);
+    			newAttrs["repeating_talents_"+newRowID+"_talent_rank"] = talentsContainer[i+2].rank;
+    			newAttrs["repeating_talents_"+newRowID+"_talent_rank1_desc"] = getTranslationByKey(talentsContainer[i+2].id+"_r1");
+    			newAttrs["repeating_talents_"+newRowID+"_talent_rank2_desc"] = getTranslationByKey(talentsContainer[i+2].id+"_r2"); ;
+    			newAttrs["repeating_talents_"+newRowID+"_talent_rank3_desc"] = getTranslationByKey(talentsContainer[i+2].id+"_r3"); ;
+    			setAttrs(newAttrs);
+    		}
+    	}
+
+    	if (pilotWepContainer.length>2)
+    	{
+    		let newPilotWeps = pilotWepContainer.length-2;
+    		for (let i =0; i <newPilotWeps;i++)
+    		{
+    			let newRowID = generateRowID();
+    			let newAttrs = {};
+    			newAttrs["repeating_pilotweapons_"+newRowID+"_pilotwep_name"] = getTranslationByKey(pilotWepContainer[i+2].id);
+    			newAttrs["repeating_pilotweapons_"+newRowID+"_pilotwep_notes"] = pilotWepContainer[i+2].flavorName;
+    			setAttrs(newAttrs);
+    		}
+    	}	
+
+    	setAttrs({
+    		pilot_backstory:backstory,
+    		background:background,
+    		pilot_hp:current_hp,
+    		pilot_hp_max:current_hp,
+    		pilot_name:name,
+    		callsign:callsign,
+    		licenselevel:licenselevel,
+    		player:player,
+    		notes:notes,
+    		core_hull:core_hull,
+    		core_agility:core_agility,
+    		core_systems:core_systems,
+    		core_engineering:core_engineering,
+    		base_pilotarmor_name:getTranslationByKey(gearContainer.armor[0].id),
+    		base_pilotarmor_name:getTranslationByKey(gearContainer.armor[0].id),
+    		baselicensename:getTranslationByKey(licenseContainer[0].id),
+    		baselicense_tab:licenseContainer[0].rank,
+    		base_pilotskill:getTranslationByKey(skillsContainer[0].id),
+    		base_pilotskill_mod:skillsContainer[0].rank*2,
+    		base_pilotwep1_name:getTranslationByKey(pilotWepContainer[0].id),
+    		base_pilotwep2_name:getTranslationByKey(pilotWepContainer[1].id),
+    		base_pilotwep1_notes:pilotWepContainer[0].flavorName,
+    		base_pilotwep2_notes:pilotWepContainer[1].flavorName,
+    		base_talent1_name:getTranslationByKey(talentsContainer[0].id),
+    		base_talent1_rank:talentsContainer[0].rank,
+    		base_talent1_rank1_desc:getTranslationByKey(talentsContainer[0].id+"_r1"),
+    		base_talent1_rank2_desc:getTranslationByKey(talentsContainer[0].id+"_r2"),
+    		base_talent1_rank3_desc:getTranslationByKey(talentsContainer[0].id+"_r3"),
+    		base_talent2_name:getTranslationByKey(talentsContainer[1].id),
+    		base_talent2_rank:talentsContainer[1].rank,
+    		base_talent2_rank1_desc:getTranslationByKey(talentsContainer[1].id+"_r1"),
+    		base_talent2_rank2_desc:getTranslationByKey(talentsContainer[1].id+"_r2"),
+    		base_talent2_rank3_desc:getTranslationByKey(talentsContainer[1].id+"_r3"),
+    		compcon_import:"IMPORT COMPLETE"
+   		});
 	});
 });
 </script>
@@ -252,7 +507,9 @@ on("sheet:opened change:acc_diff change:frame_save_target change:frame_class cha
 	<input type="radio" class="sheet-tab sheet-tab2" name="attr_core-tab" value="2" title="Talents" />
 	<span class="tab tab2" style='line-height: 40px;'>TALENTS</span>
 	<input type="radio" class="sheet-tab sheet-tab3" name="attr_core-tab" value="3" title="Mech"   />
-	<span class="tab tab3" style='line-height: 40px;margin-right:115px'>MECH</span>
+	<span class="tab tab3" style='line-height: 40px;'>MECH</span>
+	<input type="radio" class="sheet-tab sheet-tab4" style="width:40px" name="attr_core-tab" value="4" title="Settings"   /> 
+	<span class="tab tab4" style='line-height: 38px;width:40px;font-size:28px;font-family:"Pictos";margin-left:-40px;margin-right:136px;'>y</span>
 	<input type="radio" class="acc-tab acc-tab1" name="attr_acc_tab" value="always" title="Always Roll 6d6" />
 	<span class="acc-tab acc-tab1" style='line-height: 40px;'>6D6</span>
 	<input type="radio" class="acc-tab acc-tab1" name="attr_acc_tab" value="acc" title="Accuracy" />
@@ -269,6 +526,22 @@ on("sheet:opened change:acc_diff change:frame_save_target change:frame_class cha
 		<option value=4>4</option>
 	</select>
 	<!-- end tab setup-->
+	<div class="section-settings"><!--settings tab-->
+		<div class="flex-column-wrapper compcon" style="width:43%">
+			<textarea name="attr_compcon_import_staging" class="compcon"></textarea>
+			<div class="flex-element ">
+				<button type="action" class="compcon" name="act_validate">Validate</button>
+				<span name="attr_compcon_validate" class="validate" >WAITING FOR VALIDATION...</span>
+			</div>
+			<input type="hidden" name="attr_compcon_isvalidated" value="false"/>
+
+			<div class="flex-element">
+				<button type="action" name="act_import">Import</button>
+				<span name="attr_compcon_import" class="validate" >WAITING FOR IMPORT...</span>
+			</div>
+		</div>
+	</div>
+
 
 	<div class="section-pilot"><!-- pilot tab -->
 		<div class="flex-row-wrapper" style="background:#ddd"> <!--row display; wraps entire tab -->
@@ -281,7 +554,7 @@ on("sheet:opened change:acc_diff change:frame_save_target change:frame_class cha
 				<div class="1x nopad headerbar tab-flex-item" style="height:100%;width:70%;"> <!--header inputs-->
 					<div class="nopad nomarg notop tab-flex-item" style="height:25px;width:100%;margin-left:5px;padding-right:2px">
 						<div class="flex-element" style="background:#000">
-							<label class="section-title">NAME</label>
+							<label class="section-title">PILOT</label>
 						</div>
 						<div class="2x flex-element">
 							<input class="onederline flex mid" style="background:#eee" type="text" name="attr_pilot_name">
@@ -334,11 +607,11 @@ on("sheet:opened change:acc_diff change:frame_save_target change:frame_class cha
 					<div class="flex-element block-title-side"> <!--block title-->
 						<label class="nopad section-title" style="margin-top:6px">PILOT HP</label>
 					</div>
-					<div class="flex-element" style="height:90%;width:145px;margin-top:2px">
+					<div class="flex-element pilot-hp" style="height:90%;width:145px;margin-top:2px">
 						<input class="underline 2digit" style="margin-left:4px;width:65px;
 						position:absolute;left:112px;height:25px;margin-top:3px" value="0" type="number" name="attr_pilot_hp"/>
 						<span class="hp-separator " style="position:absolute;left:185px"> / </span>
-						<input class="underline 2digit" value="0" type="number" name="attr_pilot_hp_max" style="margin-right:25px;width:65px;height:25px;position:absolute;left:193px;margin-top:3px"/>
+						<input class="underline 2digit" value="0" type="number" name="attr_pilot_hp_max" style="margin-right:25px;width:65px;height:25px;position:absolute;left:193px;margin-top:3px;"/>
 					</div>
 				</div><!--pilot hp block-->
 				<div class="nopad just-start testborder border tab-flex-item-nowrap" style="height:30px;padding:0px;;"> <!--pilot grit block-->
@@ -485,43 +758,8 @@ on("sheet:opened change:acc_diff change:frame_save_target change:frame_class cha
 						<input type="text" class="1x underline" name="attr_base_pilotarmor_bonuses"/>
 					</div>
 				</div> <!--pilot base armor block-->
-				<div class="pilotarmor-counter-div">  <!--counter div-->
-					<fieldset class="repeating_pilotarmor" style="width:400px;"> <!--pilot armor repeating set-->
-						<div class="multi-input nopad just-start align-between border tab-flex-item pilotarmor" style="width:400px;min-height:150px"> <!--pilot armor repeating block-->
-							<div class="block-title-top nomarg flex-element " style="width:100%;height:100%;margin-top:-1px"> <!--block title-->
-								<label class="section-title pilotarmor-counter"></label>
-							</div>
-							<div class="flex-element 3m-sides" style="width:98%">
-								<label class="0x">NAME</label>
-								<input type="text" class="1x underline" name="attr_base_pilotarmor_name"/>
-							</div>
-							<div class="just-between flex-element" style="width:100%">
-								<div class="1x flex-element" style="margin-left: 3px;margin-right:0px">
-									<label class="0x">ARMOR</label>
-									<input type="number" class="1digit underline" name="attr_base_pilotarmor_armor"/>
-								</div>
-								<div class="1x flex-element">
-									<label>EVASION</label>
-									<input type="number" class="2digit  underline" name="attr_base_pilotarmor_evasion"/>
-								</div>
-								<div class="1x flex-element">
-									<label>E-DEF</label>
-									<input type="number" class="2digit  underline" name="attr_base_pilotarmor_edef"/>
-								</div>
-								<div class=" 1x flex-element" style='margin-right: -5px'>
-									<label >SPEED</label>
-									<input type="number" class="1digit underline" name="attr_base_pilotarmor_spd"/>
-								</div>
-							</div>
-							<div class="3m-sides flex-element" style="width:98%">
-								<label class="0x">BONUSES</label>
-								<input type="text" class="1x underline" name="attr_base_pilotarmor_bonuses"/>
-							</div>
-						</div> <!--pilot armor repeating block-->
-					</fieldset><!--pilot armor repeating set-->
-				</div> <!--counter div-->
 
-				<div class="just-between nopad tab-flex-item" style="width:400px;min-height:150px;height:150px;margin-top:-23px"> <!--pilot base weapons joint block -->
+				<div class="just-between nopad tab-flex-item" style="width:400px;min-height:150px;height:150px;margin-top:8px"> <!--pilot base weapons joint block -->
 					<div class="mini-input nopad just-between nomarg border tab-flex-item pilotweps" style="width:49%;height:150px"> <!--pilot base weapon block 1-->
 						<div class="nopad flex-element block-title-top" style="margin-top:-3px"> <!--block title-->
 							<button type="roll" name="Pilot_Wep_1" class="pilotweapon-roll section-title" value="&{template:lancer} {{color=black}} {{name=@{base_pilotwep1_name}}} {{to-hit=[[d20cs0cf0@{net_acc}+@{grit}]]}} {{acc-diff=@{acc_diff_block}}}{{@{base_pilotwep1_dmgtype}=[[@{base_pilotwep1_damage}]]}} {{range=[[@{base_pilotwep1_range}]]}}{{tags=@{base_pilotwep1_tags}}}">
@@ -695,7 +933,7 @@ on("sheet:opened change:acc_diff change:frame_save_target change:frame_class cha
 				<div class="1x nopad headerbar tab-flex-item" style="height:100%;width:70%;"> <!--header inputs-->
 					<div class="nopad nomarg notop tab-flex-item" style="height:25px;width:100%;margin-left:5px;padding-right:2px">
 						<div class="flex-element" style="background:#000">
-							<label class="section-title">NAME</label>
+							<label class="section-title">PILOT</label>
 						</div>
 						<div class="2x flex-element">
 							<input class="onederline flex mid" style="background:#eee" type="text" name="attr_pilot_name">
@@ -755,30 +993,30 @@ on("sheet:opened change:acc_diff change:frame_save_target change:frame_class cha
 				</div>
 				<div class="nomarg flex-element">
 					<div class="nopad flex-element-reverse" style="width:inherit;height:20px;margin-top:3px;margin-bottom:3px;"> <!--base license block-->
-						<input type="radio" class="talentrank talentrank3" name="attr_base_talent1-rank" value="3" title="rank III" />
+						<input type="radio" class="talentrank talentrank3" name="attr_base_talent1-rank" value="3" title="Rank III" />
 						<span class="talentrank talentrank3"><span >III</span></span>
-						<input type="radio" class="talentrank talentrank2" name="attr_base_talent1-rank" value="2" title="rank II" />
+						<input type="radio" class="talentrank talentrank2" name="attr_base_talent1-rank" value="2" title="Rank II" />
 						<span class="talentrank talentrank2" ><span >II</span></span>
-						<input type="radio" class="talentrank talentrank1" name="attr_base_talent1-rank" value="1" checked='true' title="rank I"/>
+						<input type="radio" class="talentrank talentrank1" name="attr_base_talent1-rank" value="1" checked='true' title="Rank I"/>
 						<span class="talentrank talentrank1" style='border-left:2px solid black;'><span >I</span></span>
 					</div> <!--license item base block-->
 				</div>
 				<div class="nopad nomarg flex-element" >
-					<button type="roll" style="top:0px;font-size:16px" name="Talent_1_Rank_I"  class="nomarg talent-roll" value="&{template:lancer} {{name=@{base_talent1_name}}} {{tags=Rank I}} {{effect=@{base_talent1_rank1_desc}}}"><span style="padding-left:2px">rank I</span>
+					<button type="roll" style="top:0px;font-size:16px" name="Talent_1_Rank_I"  class="nomarg talent-roll" value="&{template:lancer} {{name=@{base_talent1_name}}} {{tags=Rank I}} {{effect=@{base_talent1_rank1_desc}}}"><span style="padding-left:2px">Rank I</span>
 					<span style="font-family:'dicefontd20';position:relative;top:2px">0</span></button>
 				</div>
 				<div class="flex-element" style="width:100%;height:85px">
 					<textarea name="attr_base_talent1_rank1_desc"></textarea>
 				</div>
 				<div class="nopad nomarg flex-element" >
-					<button type="roll" style="font-size:16px" name="Talent_1_Rank_II" class="nomarg talent-roll" value="&{template:lancer} {{name=@{base_talent1_name}}} {{tags=Rank II}} {{effect=@{base_talent1_rank2_desc}}}"><span style="padding-left:2px">rank II</span>
+					<button type="roll" style="font-size:16px" name="Talent_1_Rank_II" class="nomarg talent-roll" value="&{template:lancer} {{name=@{base_talent1_name}}} {{tags=Rank II}} {{effect=@{base_talent1_rank2_desc}}}"><span style="padding-left:2px">Rank II</span>
 					<span style="font-family:'dicefontd20';position:relative;top:2px">0</span></button>
 				</div>
 				<div class="flex-element" style="width:100%;height:85px">
 					<textarea name="attr_base_talent1_rank2_desc"></textarea>
 				</div>
 				<div class="nopad nomarg flex-element">
-					<button type="roll" style="font-size:16px" name="Talent_1_Rank_III" class="talent-roll" value="&{template:lancer} {{name=@{base_talent1_name}}} {{tags=Rank III}} {{effect=@{base_talent1_rank3_desc}}}"><span style="padding-left:2px">rank III</span>
+					<button type="roll" style="font-size:16px" name="Talent_1_Rank_III" class="talent-roll" value="&{template:lancer} {{name=@{base_talent1_name}}} {{tags=Rank III}} {{effect=@{base_talent1_rank3_desc}}}"><span style="padding-left:2px">Rank III</span>
 					<span style="font-family:'dicefontd20';position:relative;top:2px">0</span></button>
 				</div>
 				<div class="flex-element" style="width:100%;height:85px">
@@ -798,30 +1036,30 @@ on("sheet:opened change:acc_diff change:frame_save_target change:frame_class cha
 				</div>
 				<div class="nomarg flex-element">
 					<div class="nopad flex-element-reverse" style="width:inherit;height:20px;margin-top:3px;margin-bottom:3px;"> <!--base talent 2 rank block-->
-						<input type="radio" class="talentrank talentrank3" name="attr_base_talent2-rank" value="3" title="rank III" />
+						<input type="radio" class="talentrank talentrank3" name="attr_base_talent2-rank" value="3" title="Rank III" />
 						<span class="talentrank talentrank3"><span >III</span></span>
-						<input type="radio" class="talentrank talentrank2" name="attr_base_talent2-rank" value="2" title="rank II" />
+						<input type="radio" class="talentrank talentrank2" name="attr_base_talent2-rank" value="2" title="Rank II" />
 						<span class="talentrank talentrank2" ><span >II</span></span>
-						<input type="radio" class="talentrank talentrank1" name="attr_base_talent2-rank" value="1" checked='true' title="rank I"/>
+						<input type="radio" class="talentrank talentrank1" name="attr_base_talent2-rank" value="1" checked='true' title="Rank I"/>
 						<span class="talentrank talentrank1" style='border-left:2px solid black;'><span >I</span></span>
 					</div> <!--base talent 2 rank block-->
 				</div>
 				<div class="nopad nomarg flex-element" >
-					<button type="roll" style="top:0px;font-size:16px" name="Talent_1_Rank_I"  class="nomarg talent-roll" value="&{template:lancer} {{name=@{base_talent2_name}}} {{tags=Rank I}} {{effect=@{base_talent2_rank1_desc}}}"><span style="padding-left:2px">rank I</span>
+					<button type="roll" style="top:0px;font-size:16px" name="Talent_1_Rank_I"  class="nomarg talent-roll" value="&{template:lancer} {{name=@{base_talent2_name}}} {{tags=Rank I}} {{effect=@{base_talent2_rank1_desc}}}"><span style="padding-left:2px">Rank I</span>
 					<span style="font-family:'dicefontd20';position:relative;top:2px">0</span></button>
 				</div>
 				<div class="flex-element" style="width:100%;height:85px">
 					<textarea name="attr_base_talent2_rank1_desc"></textarea>
 				</div>
 				<div class="nopad nomarg flex-element" >
-					<button type="roll" style="font-size:16px" name="Talent_1_Rank_II" class="nomarg talent-roll" value="&{template:lancer} {{name=@{base_talent2_name}}} {{tags=Rank II}} {{effect=@{base_talent2_rank2_desc}}}"><span style="padding-left:2px">rank II</span>
+					<button type="roll" style="font-size:16px" name="Talent_1_Rank_II" class="nomarg talent-roll" value="&{template:lancer} {{name=@{base_talent2_name}}} {{tags=Rank II}} {{effect=@{base_talent2_rank2_desc}}}"><span style="padding-left:2px">Rank II</span>
 					<span style="font-family:'dicefontd20';position:relative;top:2px">0</span></button>
 				</div>
 				<div class="flex-element" style="width:100%;height:85px">
 					<textarea name="attr_base_talent2_rank2_desc"></textarea>
 				</div>
 				<div class="nopad nomarg flex-element">
-					<button type="roll" style="font-size:16px" name="Talent_1_Rank_III" class="talent-roll" value="&{template:lancer} {{name=@{base_talent2_name}}} {{tags=Rank III}} {{effect=@{base_talent2_rank3_desc}}}"><span style="padding-left:2px">rank III</span>
+					<button type="roll" style="font-size:16px" name="Talent_1_Rank_III" class="talent-roll" value="&{template:lancer} {{name=@{base_talent2_name}}} {{tags=Rank III}} {{effect=@{base_talent2_rank3_desc}}}"><span style="padding-left:2px">Rank III</span>
 					<span style="font-family:'dicefontd20';position:relative;top:2px">0</span></button>
 				</div>
 				<div class="flex-element" style="width:100%;height:85px">
@@ -842,30 +1080,30 @@ on("sheet:opened change:acc_diff change:frame_save_target change:frame_class cha
 						</div>
 						<div class="nomarg flex-element">
 							<div class="nopad flex-element-reverse" style="width:inherit;height:20px;margin-top:3px;margin-bottom:3px;"> <!--base talent 2 rank block-->
-								<input type="radio" class="talentrank talentrank3" name="attr_talent-rank" value="3" title="rank III" />
+								<input type="radio" class="talentrank talentrank3" name="attr_talent-rank" value="3" title="Rank III" />
 								<span class="talentrank talentrank3"><span >III</span></span>
-								<input type="radio" class="talentrank talentrank2" name="attr_talent-rank" value="2" title="rank II" />
+								<input type="radio" class="talentrank talentrank2" name="attr_talent-rank" value="2" title="Rank II" />
 								<span class="talentrank talentrank2" ><span >II</span></span>
-								<input type="radio" class="talentrank talentrank1" name="attr_talent-rank" value="1" checked='true' title="rank I"/>
+								<input type="radio" class="talentrank talentrank1" name="attr_talent-rank" value="1" checked='true' title="Rank I"/>
 								<span class="talentrank talentrank1" style='border-left:2px solid black;'><span >I</span></span>
 							</div> <!--base talent 2 rank block-->
 						</div>
 						<div class="nopad nomarg flex-element" >
-							<button type="roll" style="top:0px;font-size:16px" name="Talent_1_Rank_I"  class="nomarg talent-roll" value="&{template:lancer} {{name=@{talent_name}}} {{tags=Rank I}} {{effect=@{talent_rank1_desc}}}"><span style="padding-left:2px">rank I</span>
+							<button type="roll" style="top:0px;font-size:16px" name="Talent_1_Rank_I"  class="nomarg talent-roll" value="&{template:lancer} {{name=@{talent_name}}} {{tags=Rank I}} {{effect=@{talent_rank1_desc}}}"><span style="padding-left:2px">Rank I</span>
 							<span style="font-family:'dicefontd20';position:relative;top:2px">0</span></button>
 						</div>
 						<div class="flex-element" style="width:100%;height:85px">
 							<textarea name="attr_talent_rank1_desc"></textarea>
 						</div>
 						<div class="nopad nomarg flex-element" >
-							<button type="roll" style="font-size:16px" name="Talent_1_Rank_II" class="nomarg talent-roll" value="&{template:lancer} {{name=@{talent_name}}} {{tags=Rank II}} {{effect=@{talent_rank2_desc}}}"><span style="padding-left:2px">rank II</span>
+							<button type="roll" style="font-size:16px" name="Talent_1_Rank_II" class="nomarg talent-roll" value="&{template:lancer} {{name=@{talent_name}}} {{tags=Rank II}} {{effect=@{talent_rank2_desc}}}"><span style="padding-left:2px">Rank II</span>
 							<span style="font-family:'dicefontd20';position:relative;top:2px">0</span></button>
 						</div>
 						<div class="flex-element" style="width:100%;height:85px">
 							<textarea name="attr_talent_rank2_desc"></textarea>
 						</div>
 						<div class="nopad nomarg flex-element">
-							<button type="roll" style="font-size:16px" name="Talent_1_Rank_III" class="talent-roll" value="&{template:lancer} {{name=@{talent_name}}} {{tags=Rank III}} {{effect=@{talent_rank3_desc}}}"><span style="padding-left:2px">rank III</span>
+							<button type="roll" style="font-size:16px" name="Talent_1_Rank_III" class="talent-roll" value="&{template:lancer} {{name=@{talent_name}}} {{tags=Rank III}} {{effect=@{talent_rank3_desc}}}"><span style="padding-left:2px">Rank III</span>
 							<span style="font-family:'dicefontd20';position:relative;top:2px">0</span></button>
 						</div>
 						<div class="flex-element" style="width:100%;height:85px">
@@ -888,7 +1126,7 @@ on("sheet:opened change:acc_diff change:frame_save_target change:frame_class cha
 				<div class="1x nopad headerbar tab-flex-item" style="height:100%;width:70%;"> <!--header inputs-->
 					<div class="nopad nomarg notop tab-flex-item" style="height:25px;width:100%;margin-left:5px;padding-right:2px">
 						<div class="flex-element" style="background:#000">
-							<label class="section-title">NAME</label>
+							<label class="section-title">PILOT</label>
 						</div>
 						<div class="2x flex-element">
 							<input class="onederline flex mid" style="background:#eee" type="text" name="attr_pilot_name">
@@ -1452,12 +1690,262 @@ on("sheet:opened change:acc_diff change:frame_save_target change:frame_class cha
 				</div> <!--frame stat autocalcs block-->
 
 				<div class="flex-row-wrapper nopad" style="width:515px;"> <!--frame weapons block-->
-					<div class="align-start multi-input border tab-flex-item" style="padding:0px;width:100%"> <!--frame base weapon 1-->
-						<div class="flex-element nomarg reactbar" style="padding:0px;width:92%;margin:0px;margin-bottom: 2px;height:25px"  >
-							<button type="roll"  name="roll_Mech_Wep_1" class="grit-roll" style="margin:0px" value="&{template:lancer} {{color=black}} {{name=@{base_framewep1_name}}} {{to-hit=[[d20cs0cf0@{net_acc}+@{grit}]]}} {{acc-diff=@{acc_diff_block}}} {{@{base_framewep1_dmgtype}=[[@{base_framewep1_damage}]]}} {{@{base_framewep1_dmgtype2}=[[@{base_framewep1_damage2}]]}} {{@{base_framewep1_rangetype}=[[@{base_framewep1_range}]]}} {{@{base_framewep1_rangetype2}=[[@{base_framewep1_range2}]]}} {{tags=@{base_framewep1_mount} @{base_framewep1_type} @{base_framewep1_tags}}} {{effect=@{base_framewep1_notes} }}">WEAPON 1
+					<div class="align-start multi-input border tab-flex-item " style="padding:0px;min-height:25px; width:505px;"> <!--frame base mount block-->
+						<div class="flex-element nomarg" style="padding:0px;width:100%;margin:0px;margin-bottom:2px;height:25px;"  >
+							<button type="roll" name="roll_Mech_Wep_1" class="grit-roll flex 2x" style="margin:0px;height:27px;padding-top:4px;text-align:left" value="&{template:lancer} {{color=black}} {{name=@{base_framewep1_name}}} {{to-hit=[[d20cs0cf0@{net_acc}+@{grit}]]}} {{acc-diff=@{acc_diff_block}}} {{@{base_framewep1_dmgtype}=[[@{base_framewep1_damage}]]}} {{@{base_framewep1_dmgtype2}=[[@{base_framewep1_damage2}]]}} {{@{base_framewep1_rangetype}=[[@{base_framewep1_range}]]}} {{@{base_framewep1_rangetype2}=[[@{base_framewep1_range2}]]}} {{tags=@{base_framewep1_mount} @{base_framewep1_type} @{base_framewep1_tags}}} {{effect=@{base_framewep1_notes} }}">MOUNT 1
+							<span style="font-family:'dicefontd20';position:relative;">0</span></button>
+							<select class="flex underline" name="attr_basemount_select" style="width:120px;margin:none">
+								<option value="Aux">AUX/AUX</option>
+								<option value="Main">MAIN</option>
+								<option value="Main/Aux">MAIN/AUX</option>
+								<option value="Heavy">HEAVY</option>
+								<option value="Integrated">INTEGRATED</option>
+							</select>
+							<input type="checkbox" class=" showreaction nomarg" name="attr_basemount-shown" style="left:5px;width:15px;height:10px;top:10px;margin-bottom:0px"/>
+							<span class=" showreaction" style="right:800px;left:0px;height:10px;margin-bottom:0px;top:6px;margin-left:-15px"></span>
+						</div>
+						<input type="radio" class="basemount-type basemount-type-1" name="attr_basemount_type" value="1" checked="checked" />
+						<input type="checkbox" class=" showreaction nomarg" name="attr_basemount-shown" style="display:none"/>	<!--BASE MOUNT AUX-->
+						<div class="align-start multi-input border base-auxmount tab-flex-item " style="padding:0px;min-height:50px; margin:0px;width:100%"> 
+							<div class=" multi-input flex-element-dynamic  " style="width:49%; ">
+								<label class="flex" style="max-width:40px">AUX</label> 
+								<input type="text" class="flex 1x underline" style="height:25px" name="attr_basemount-aux1-name"/>
+							</div>
+							<div class="wep-spacer"></div>
+							<div class=" multi-input flex-element-dynamic  " style="width:49%; ">
+								<label class="flex" style="max-width:40px">AUX</label> 
+								<input type="text" class="flex 1x underline" style="height:25px" name="attr_basemount-aux2-name"/>
+							</div>
+							<div class=" multi-input flex-element-dynamic just" style="width:49%;margin-top:2px; ">
+								<label class="flex" style="max-width:40px">TYPE</label> 
+								<select name="attr_basemount-aux1-type"  style="height:25px;padding-top:5px;padding-bottom:0px;" class="flex 1x underline">
+									<option value = 'Cannon'>Cannon</option>
+									<option value = 'CQB'>CQB</option>
+									<option value = 'Launcher'>Launcher</option>
+									<option value = 'Melee'>Melee</option>
+									<option value = 'Nexus'>Nexus</option>
+									<option value = 'Rifle'>Rifle</option>
+								</select>
+								<select name="attr_basemount-aux1-rangetype"class="underline" style="height:25px;padding-top:5px;padding-bottom:0px;margin-left:10px">
+									<option value="range">Range</option>
+									<option value="line">Line</option>
+									<option value="cone">Cone</option>
+									<option value="blast">Blast</option>
+									<option value="burst">Burst</option>
+								</select>
+								<input type="number" class=" underline 2digit" value="0" style="height:25px;min-width:10px;text-align:center;margin-left:4px;font-weight:bold;color:#444;font-size:16px" name="attr_basemount-aux1-range"/>
+							</div>
+							<div class="wep-spacer"></div>
+
+							<div class=" multi-input flex-element-dynamic just" style="width:49%;margin-top:2px;margin-bottom:0px; ">
+								<label class="flex" style="max-width:40px">TYPE</label> 
+								<select name="attr_basemount-aux2-type"  style="height:25px;padding-top:5px;padding-bottom:0px;" class="flex 1x underline">
+									<option value = 'Cannon'>Cannon</option>
+									<option value = 'CQB'>CQB</option>
+									<option value = 'Launcher'>Launcher</option>
+									<option value = 'Melee'>Melee</option>
+									<option value = 'Nexus'>Nexus</option>
+									<option value = 'Rifle'>Rifle</option>
+								</select>
+								<select name="attr_basemount-aux2-rangetype"class="underline" style="height:25px;padding-top:5px;padding-bottom:0px;margin-left:10px">
+									<option value="range">Range</option>
+									<option value="line">Line</option>
+									<option value="cone">Cone</option>
+									<option value="blast">Blast</option>
+									<option value="burst">Burst</option>
+								</select>
+								<input type="number" class=" underline 2digit" value="0" style="height:25px;min-width:10px;text-align:center;margin-left:4px;font-weight:bold;color:#444;font-size:16px" name="attr_basemount-aux2-range"/>
+							</div>
+
+							<div class=" multi-input flex-element-dynamic " style="width:49%; margin-top:-5px">
+								<label class="flex" style="max-width:40px">DMG</label> 
+								<input type="text" class="underline flex nomarg" value="0" style="min-width:10px;height:25px;padding-left:0px;margin-left:0px;font-weight:bold;" name="attr_basemount_aux1-dmg1"/>
+								<select name="attr_basemount-aux1-dmgtype1"class="underline" style="height:25px;margin-left:2px;padding-top:5px;padding-bottom:0px;max-width:45px;padding-left:0px;padding-right:8px;text-align:left">
+									<option value="kinetic">KIN</option>
+									<option value="explosive">EXP</option>
+									<option value="energy">ERG</option>
+									<option value="heat">HET</option>
+									<option value="burn">BRN</option>
+								</select>
+								<span class="hp-separator" style="font-size:14px;line-height:35px;margin-left:2px;margin-right:2px"> + </span>
+									<input type="text" class="underline flex nomarg" style="min-width:10px;padding-left:0px;height:25px;font-weight:bold;" name="attr_basemount_aux1-dmg2"/>
+									<select name="attr_basemount-aux1-dmgtype2"class="underline" style="height:25px;margin-left:2px;padding-top:5px;padding-bottom:;max-width:45px;padding-left:0px;padding-right:0px">
+										<option value="kinetic">KIN</option>
+										<option value="explosive">EXP</option>
+										<option value="energy">ERG</option>
+										<option value="heat">HET</option>
+										<option value="burn">BRN</option>
+									</select>
+							</div>
+
+							<div class="wep-spacer"></div>
+
+							<div class=" multi-input flex-element-dynamic " style="width:49%; margin-top:-5px">
+								<label class="flex" style="max-width:40px">DMG</label> 
+								<input type="text" class="underline flex nomarg" value="0" style="min-width:10px;height:25px;padding-left:0px;font-weight:bold;" name="attr_basemount_aux2-dmg1"/>
+								<select name="attr_basemount-aux2-dmgtype1"class="underline" style="height:25px;margin-left:2px;padding-top:5px;padding-bottom:0px;max-width:45px;padding-left:0px;padding-right:8px;text-align:left">
+									<option value="kinetic">KIN</option>
+									<option value="explosive">EXP</option>
+									<option value="energy">ERG</option>
+									<option value="heat">HET</option>
+									<option value="burn">BRN</option>
+								</select>
+								<span class="hp-separator" style="font-size:14px;line-height:35px;margin-left:3px;margin-right:3px"> + </span>
+									<input type="text" class="underline flex nomarg" style="min-width:10px;padding-left:0px;height:25px;font-weight:bold;" name="attr_basemount_aux2-dmg2"/>
+									<select name="attr_basemount-aux2-dmgtype2"class="underline" style="height:25px;margin-left:2px;padding-top:5px;padding-bottom:0px;max-width:45px;padding-left:0px;padding-right:0px">
+										<option value="kinetic">KIN</option>
+										<option value="explosive">EXP</option>
+										<option value="energy">ERG</option>
+										<option value="heat">HET</option>
+										<option value="burn">BRN</option>
+									</select>
+							</div>
+							<div class=" multi-input flex-element-dynamic " style="width:49%; margin-top:-5px">
+								<label class="flex" style="max-width:40px">LIMT</label> 
+								<input type="number" class="underline 1digit" value=0 style="position:relative;bottom:2px;min-width:15px;height:25px;font-weight:bold;color:#444;font-size:16px" name="attr_basemount-aux1-charges"/>
+								<span class="hp-separator" style="font-size:20px;position:relative;top:3px;;"> / </span>
+								<input type="number" class="underline 1digit" value=0 style="position:relative;bottom:2px;min-width:15px;height:25px;font-weight:bold;color:#444;font-size:16px" name="attr_basemount-aux1-charges-max"/>
+								<label class="flex" style="max-width:65px">THREAT</label> 
+								<input type="number" class="underline 1digit" value=1 style="position:relative;bottom:2px;min-width:15px;height:25px;font-weight:bold;color:#444;font-size:16px" name="attr_basemount-aux1-threat"/>
+							</div>
+
+							<div class="wep-spacer"></div>
+
+							<div class=" multi-input flex-element-dynamic " style="width:49%; margin-top:-5px">
+								<label class="flex" style="max-width:40px">LIMT</label> 
+								<input type="number" class="underline 1digit" value=0 style="position:relative;bottom:2px;min-width:15px;height:25px;font-weight:bold;color:#444;font-size:16px" name="attr_basemount-aux2-charges"/>
+								<span class="hp-separator" style="font-size:20px;position:relative;top:3px;;"> / </span>
+								<input type="number" class="underline 1digit" value=0 style="position:relative;bottom:2px;min-width:15px;height:25px;font-weight:bold;color:#444;font-size:16px" name="attr_basemount-aux2-charges-max"/>
+								<label class="flex" style="max-width:65px">THREAT</label> 
+								<input type="number" class="underline 1digit" value=1 style="position:relative;bottom:2px;min-width:15px;height:25px;font-weight:bold;color:#444;font-size:16px" name="attr_basemount-aux2-threat"/>
+							</div>
+
+							<div class=" multi-input flex-element-dynamic " style="width:49%; margin-top:2px">
+								<label class="flex" style="max-width:40px">TAGS</label> 
+								<input type="text" class="underline" name="attr_basemount-aux1-tags" />
+							</div>
+
+							<div class="wep-spacer"></div>
+
+							<div class=" multi-input flex-element-dynamic " style="width:49%; margin-top:2px">
+								<label class="flex" style="max-width:40px">TAGS</label> 
+								<input type="text" class="underline" name="attr_basemount-aux2-tags" />
+							</div>
+
+							<div class=" multi-input flex-element-dynamic " style="width:49%; margin-top:2px">
+								<label class="flex" style="max-width:40px">NOTES</label> 
+								<input type="checkbox" class="editbutton just-end-self" name="attr_basemount_aux1_editbutton" style="left:100px">
+								<span class="editbutton just-end-self" style='display:inline-block;font-size:16px;font-family:"Pictos";'>y</span>
+
+							</div>
+
+							<div class="wep-spacer"></div>
+
+							<div class=" multi-input flex-element-dynamic " style="width:49%; margin-top:2px">
+								<label class="flex" style="max-width:40px">NOTES</label> 
+								<input type="checkbox" class="editbutton just-end-self" name="attr_basemount_aux2_editbutton" style="left:100px">
+								<span class="editbutton just-end-self" style='display:inline-block;font-size:16px;font-family:"Pictos";'>y</span>
+							</div>
+
+							<div class=" multi-input flex-element-dynamic" style="width:49%; margin-top:2px;min-height:0px">
+								<input type="checkbox" class="editbutton just-end-self" name="attr_basemount_aux1_editbutton" style="display:none">
+								<textarea class="underline edit-on" placeholder=">ENTRY_AWAIT::wep_data" style="margin-left:3px;padding:0px;height:50px;" name="attr_basemount-aux1-notes"></textarea>
+								<span class='edit-off' style="margin-left:3px;min-height:0px;" name="attr_basemount-aux1-notes">
+							</div>
+							<div class="wep-spacer"></div>
+
+							<div class=" multi-input flex-element-dynamic " style="width:49%; margin-top:2px;min-height:0px">
+								<input type="checkbox" class="editbutton just-end-self" name="attr_basemount_aux2_editbutton" style="display:none">
+								<textarea class="underline edit-on" placeholder=">ENTRY_AWAIT::wep_data" style="margin-left:3px;padding:0px;height:50px;width:100%" name="attr_basemount-aux2-notes"></textarea>
+								<span class='edit-off' style="margin-left:3px;min-height:0px;width:100%" name="attr_basemount-aux2-notes">
+							</div>
+						</div>
+
+						<input type="radio" class="basemount-type basemount-type-2" name="attr_basemount_type" value="2" /> <!--BASE MOUNT MAIN--> 
+						<div class="align-start multi-input border base-mainmount tab-flex-item " style="padding-right:4px;min-height:50px; margin:0px;width:100%">
+							<div class=" multi-input flex-element-dynamic  " style="width:100%; ">
+								<label class="flex" style="max-width:40px">MAIN</label> 
+								<input type="text" class="flex 1x underline" style="height:25px" name="attr_basemount-main-name"/>
+							</div>
+							<div class=" multi-input flex-element-dynamic just" style="width:100%;margin-top:2px; ">
+								<label class="flex" style="max-width:40px">TYPE</label> 
+								<select name="attr_basemount-main-type"  style="height:25px;padding-top:5px;padding-bottom:0px;" class="flex 1x underline">
+									<option value = 'Cannon'>Cannon</option>
+									<option value = 'CQB'>CQB</option>
+									<option value = 'Launcher'>Launcher</option>
+									<option value = 'Melee'>Melee</option>
+									<option value = 'Nexus'>Nexus</option>
+									<option value = 'Rifle'>Rifle</option>
+								</select>
+								<select name="attr_basemount-main-rangetype"class="underline" style="height:25px;padding-top:5px;padding-bottom:0px;margin-left:10px">
+									<option value="range">Range</option>
+									<option value="line">Line</option>
+									<option value="cone">Cone</option>
+									<option value="blast">Blast</option>
+									<option value="burst">Burst</option>
+								</select>
+								<input type="number" class=" underline 2digit" value="0" style="height:25px;min-width:10px;text-align:center;margin-left:4px;font-weight:bold;color:#444;font-size:16px" name="attr_basemount-main-range"/>
+							</div>
+
+							<div class=" multi-input flex-element-dynamic " style="width:100%; margin-top:-5px">
+								<label class="flex" style="max-width:40px">DMG</label> 
+								<input type="text" class="underline flex nomarg" value="0" style="min-width:10px;height:25px;padding-left:0px;margin-left:0px;font-weight:bold;" name="attr_basemount_main-dmg1"/>
+								<select name="attr_basemount-main-dmgtype1"class="underline" style="height:25px;margin-left:2px;padding-top:5px;padding-bottom:0px;width:75px;padding-left:0px;padding-right:8px;text-align:left">
+									<option value="kinetic">KIN</option>
+									<option value="explosive">EXP</option>
+									<option value="energy">ERG</option>
+									<option value="heat">HET</option>
+									<option value="burn">BRN</option>
+								</select>
+								<span class="hp-separator" style="font-size:14px;line-height:35px;margin-left:2px;margin-right:2px"> + </span>
+									<input type="text" class="underline flex nomarg" style="min-width:10px;padding-left:0px;height:25px;font-weight:bold;" name="attr_basemount_main-dmg2"/>
+									<select name="attr_basemount-main-dmgtype2"class="underline" style="height:25px;margin-left:2px;padding-top:5px;padding-bottom:0px;width:75px;padding-left:0px;padding-right:0px">
+										<option value="kinetic">KIN</option>
+										<option value="explosive">EXP</option>
+										<option value="energy">ERG</option>
+										<option value="heat">HET</option>
+										<option value="burn">BRN</option>
+									</select>
+									<label class="flex" style="max-width:40px">LIMT</label> 
+									<input type="number" class="underline 1digit" value=0 style="position:relative;bottom:2px;min-width:15px;height:25px;font-weight:bold;color:#444;font-size:16px" name="attr_basemount-main-charges"/>
+									<span class="hp-separator" style="font-size:20px;position:relative;top:3px;;"> / </span>
+									<input type="number" class="underline 1digit" value=0 style="position:relative;bottom:2px;min-width:15px;height:25px;font-weight:bold;color:#444;font-size:16px" name="attr_basemount-main-charges-max"/>
+									<label class="flex" style="max-width:65px">THREAT</label> 
+									<input type="number" class="underline 1digit" value=1 style="position:relative;bottom:2px;min-width:15px;height:25px;font-weight:bold;color:#444;font-size:16px" name="attr_basemount-main-threat"/>
+							</div>
+
+							<div class=" multi-input flex-element-dynamic " style="width:100%; margin-top:-5px">
+								<label class="flex" style="max-width:40px">TAGS</label> 
+								<input type="text" class="underline flex" name="attr_basemount-aux2-tags" />
+							</div>
+
+							<div class=" multi-input flex-element-dynamic " style="width:100%; margin-top:5px">
+								<label class="flex" style="max-width:40px">NOTES</label> 
+								<input type="checkbox" class="editbutton just-end-self" name="attr_basemount_main_editbutton" style="left:220px">
+								<span class="editbutton just-end-self" style='display:inline-block;font-size:16px;font-family:"Pictos";'>y</span>
+							</div>
+
+							<div class=" multi-input flex-element-dynamic" style="width:100%; margin-top:2px;min-height:0px">
+								<input type="checkbox" class="editbutton just-end-self" name="attr_basemount_main_editbutton" style="display:none">
+								<textarea class="underline edit-on" placeholder=">ENTRY_AWAIT::wep_data" style="margin-left:3px;padding:0px;height:50px;" name="attr_basemount-main-notes"></textarea>
+								<span class='edit-off' style="margin-left:3px;min-height:0px;width:100%" name="attr_basemount-main-notes">
+							</div>
+
+						</div>
+
+
+						<input type="radio" class="basemount-type basemount-type-3" name="attr_basemount_type" value="3"  />
+						<input type="radio" class="basemount-type basemount-type-4" name="attr_basemount_type" value="4"  />
+						<input type="radio" class="basemount-type basemount-type-4" name="attr_basemount_type" value="5"  />
+
+					</div>
+					<div class="align-start multi-input border tab-flex-item" style="padding:0px;width:100%;display:none"> <!--LEGACY frame base weapon-->
+						<div class="flex-element nomarg reactbar" style="padding:0px;width:92%;margin:0px;margin-bottom: 2px;height:25px;"  >
+							<button type="roll"  name="roll_Mech_Wep_1" class="grit-roll" style="margin:0px" value="&{template:lancer} {{color=black}} {{name=@{base_framewep1_name}}} {{to-hit=[[d20cs0cf0@{net_acc}+@{grit}]]}} {{acc-dif=@{acc_diff_block}}} {{@{base_framewep1_dmgtype}=[[@{base_framewep1_damage}]]}} {{@{base_framewep1_dmgtype2}=[[@{base_framewep1_damage2}]]}} {{@{base_framewep1_rangetype}=[[@{base_framewep1_range}]]}} {{@{base_framewep1_rangetype2}=[[@{base_frmewep1_range2}]]}} {{tags=@{base_framewep1_mount} @{base_framewep1_type} @{base_framewep1_tags}}} {{effect=@{base_framewep1_notes} }}">WEAPON 1
 							<span style="font-family:'dicefontd20';position:relative;">0</span></button>
 							<input type="text" class="1x underline" name="attr_base_framewep1_name"/>
 						</div>
+
 						<input type="checkbox" class=" showreaction nomarg" name="attr_base_framewep1_shown" style="left:20px;width:15px;height:10px;top:10px;margin-bottom:0px"/>
 						<span class=" showreaction" style="right:800px;left:0px;height:10px;margin-bottom:0px;top:6px"></span>
 						<div class="flex-element wepinputs" style="">
@@ -1468,7 +1956,7 @@ on("sheet:opened change:acc_diff change:frame_save_target change:frame_class cha
 								<option value="Heavy">Heavy</option>
 								<option value="Superheavy">Superheavy</option>
 							</select>
-							<label style="max-width:42px">TYPE</label>
+							<label style="max-width:40px">TYPE</label>
 							<input type="text" class="1x underline" style="font-size:14px;font-weight: normal;width:25px;position:relative;bottom:2px"name="attr_base_framewep1_type"/>
 						</div>
 						<div class="flex-element just-between wepinputs" >
@@ -1541,7 +2029,7 @@ on("sheet:opened change:acc_diff change:frame_save_target change:frame_class cha
 
 					<div class="weapon-counter-div"> <!--weapon counter div-->
 						<fieldset class="repeating_weapons"> <!--frame weapon repeating set-->
-					<div class="align-start multi-input border tab-flex-item" style="padding:0px;width:505px"> <!--frame base weapon 1-->
+					<div class="align-start multi-input border tab-flex-item" style="padding:0px;width:505px; display:none"> <!--frame base weapon 1-->
 						<div class="flex-element nomarg reactbar" style="padding:0px;width:92%;margin:0px;margin-bottom: 2px;height:25px"  >
 							<button type="roll"  name="rol_Mech_Wep" class="grit-roll" style="margin:0px" value="&{template:lancer} {{color=black}} {{name=@{framewep_name}}} {{to-hit=[[d20cs0cf0@{net_acc}+@{grit}]]}} {{acc-diff=@{acc_diff_block}}} {{@{framewep_dmgtype}=[[@{framewep_damage}]]}} {{@{framewep_dmgtype2}=[[@{framewep_damage2}]]}} {{@{framewep_rangetype}=[[@{framewep_range}]]}} {{@{framewep_rangetype2}=[[@{framewep_range2}]]}} {{tags=@{framewep_mount} @{framewep_type} @{framewep_tags}}} {{effect=@{framewep_notes} }}"><span class="weapon-counter"></span>
 							<span style="font-family:'dicefontd20';position:relative;">0</span></button>
@@ -1554,7 +2042,7 @@ on("sheet:opened change:acc_diff change:frame_save_target change:frame_class cha
 							<select name="attr_framewep_mount" style="width:110px;height:25px;margin-top:-2px;padding-top:5px;padding-bottom:0px;font-size:14px;color:#444" class="underline">
 								<option value="Aux">Aux</option>
 								<option value="Main">Main</option>
-								<option value="Heavy">Heavy</option>
+								<option value="Heavy">Heavy</option>32
 								<option value="Superheavy">Superheavy</option>
 							</select>
 							<label style="max-width:42px">TYPE</label>
@@ -1592,11 +2080,11 @@ on("sheet:opened change:acc_diff change:frame_save_target change:frame_class cha
 								<label style="width:65px;">DAMAGE</label>
 								<input type="text" class="underline" value="0" style="width:60px;text-align:center;margin-left:4px;font-weight:bold;color:#444;font-size:16px" name="attr_framewep_damage"/>
 								<select name="attr_framewep_dmgtype"class="underline" style="width:110px;height:25px;margin-left:4px;padding-top:5px;padding-bottom:0px;font-size:14px;color:#444">
-									<option value="kinetic">KINETIC</option>
-									<option value="explosive">EXPLOSIVE</option>
-									<option value="energy">ENERGY</option>
-									<option value="heat">HEAT</option>
-									<option value="burn">BURN</option>
+									<option value="kinetic">KIN</option>
+									<option value="explosive">EXP</option>
+									<option value="energy">ERG</option>
+									<option value="heat">HET</option>
+									<option value="burn">BRN</option>
 								</select>
 							</div>
 							<span class="hp-separator" style="font-size:20px;line-height:35px;"> + </span>
@@ -1624,7 +2112,7 @@ on("sheet:opened change:acc_diff change:frame_save_target change:frame_class cha
 							<label style="width:60px">NOTES</label>
 						</div>
 						<div class="flex-element wepinputs" style="height:50px;margin:0px">
-							<textarea class=" underline nomarg" name="attr_framewep_notes" style="height:50px;border-top:2px solid #c7c7c7;margin-top:0px"placeholder=">ENTRY_AWAIT::wep_data"></textarea>
+							<textarea class=" underline nomarg" name="attr_framewep_notes" style="height:25px;border-top:2px solid #c7c7c7;margin-top:0px"placeholder=">ENTRY_AWAIT::wep_data"></textarea>
 						</div>
 						</fieldset> <!--frame weapon repeating set-->
 					</div> <!--weapon counter div-->
@@ -1635,7 +2123,7 @@ on("sheet:opened change:acc_diff change:frame_save_target change:frame_class cha
 					<div class="flex-element block-title-top">
 						<label class="section-title">REACTIONS</label>
 					</div>
-					<div class=" nested  testborderjust-center tab-flex-item reactbar" style="margin-left:2px;margin-bottom:0px;margin-top:0px">
+					<div class=" nested just-center tab-flex-item reactbar" style="margin-left:2px;margin-bottom:0px;margin-top:0px">
 						<input class="1x underline long" type="text" name="attr_base-reaction-name" style="margin-right:2px;padding-bottom:0px;"/>
 						<div class=" just-end-self" style="margin-top:3px;width:50px;height:25px">
 							<input type="checkbox" name="attr_corepower" class="corepower" />
